@@ -56,18 +56,61 @@
 }
 
 :root {
-    --color-base-week: #FFFFFF;
-    --color-accent: #373AF5;
-    --color-secondary: #8083A4;
-    --color-base-strong: #2C2D76;
-    --color-critic: #E5596D;
-  }
+    --color-base-week: #ffffff;
+    --color-accent: #373af5;
+    --color-secondary: #8083a4;
+    --color-base-strong: #2c2d76;
+    --color-critic: #e5596d;
+}
 
 body {
+    min-height: 100vh;
+    min-width: 100vw;
     margin: 0;
     font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI',
         'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-accent);
+    background-image: url('./assets/image/Weather-forecast-Bg-top@2x.png'),
+        url('./assets/image/Weather-forecast-Bg-bottom@2x.png'),
+        url('./assets/image/Weather-forecast-Bg-part@2x.png');
+    background-position: top right, bottom left, top left;
+    background-size: 40% auto, 45% auto, 35% auto;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1280px) {
+    body {
+        background-size: 50% auto, 55% auto, 36% auto;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-size: 50% auto, 75% auto, 37% auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: url('./assets/image/Weather-forecast-Bg-top.png'),
+            url('./assets/image/Weather-forecast-Bg-bottom.png'),
+            url('./assets/image/Weather-forecast-Bg-part.png');
+        background-size: 80% auto, 80% auto, 37% auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        background-size: 90% auto, 90% auto, 37% auto;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body {
+        background-position: top left, bottom left, top left;
+        background-size: 320px auto, 320px auto, 121px auto;
+    }
 }
