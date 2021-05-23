@@ -16,7 +16,7 @@ export type InitialStateType = {
         isLoading: isLoadingType
     }
     dayPast: {
-        day: WeatherCardType
+        day: WeatherCardType[]
         errorMessage: ErrorType
         isLoading: isLoadingType
     }
@@ -33,7 +33,7 @@ const initialState: InitialStateType = {
         {
             id: 2,
             name: 'Togliatti',
-            coordinates: { lat: '(53.507836', lon: '49.420393' },
+            coordinates: { lat: '53.507836', lon: '49.420393' },
         },
         {
             id: 3,
@@ -57,7 +57,7 @@ const initialState: InitialStateType = {
         isLoading: false,
     },
     dayPast: {
-        day: null,
+        day: [],
         errorMessage: null,
         isLoading: false,
     },
@@ -96,7 +96,7 @@ export const Reducer = (
         case TypeKeys.SET_DAY_PAST_WEATHER_INFO:
             return {
                 ...state,
-                dayPast: { ...state.dayPast, day: action.payload },
+                dayPast: { ...state.dayPast, day: [action.payload] },
             }
         default:
             return state
