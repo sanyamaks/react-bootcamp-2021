@@ -49,6 +49,7 @@ type ResponseWeatherInfo7DaysType = {
 
 type ResponseWeatheInforDayPastType = {
     current?: ResponseSuccessfulWeatherInfoDayPastType
+    hourly?: [{ temp: number; weather: [{ icon?: string }] }]
     message?: ErrorType
 }
 type isLoadingType = boolean
