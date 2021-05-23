@@ -1,21 +1,21 @@
 import {
-    geWeatherInfotDayPast,
+    getWeatherInfoDayPast,
     getWeatherInfo7days,
     getImageString,
 } from '../../API/WeatherAPI'
-import { ThunkAction, ThunkDispatch } from 'redux-thunk'
+import { ThunkDispatch } from 'redux-thunk'
 import {
     WeatherCardType,
     Weather7DaysCardsType,
     ResponseWeatherInfo7DaysType,
     ResponseSuccessfulWeatherInfo7DaysType,
     ResponseSuccessfulWeatherInfo7DaysItemType,
-    ResponseSuccessfulWeatherInfoDayPastType,
     ResponseWeatheInforDayPastType,
     ErrorType,
     isLoadingType,
+    CoordinatesType,
+    TimeType,
 } from '../../types/types'
-import { Dispatch } from 'react'
 
 export enum TypeKeys {
     SET_7DAYS_WEATHER_INFO = 'SET_7DAYS_WEATHER_INFO',
@@ -28,6 +28,7 @@ export enum TypeKeys {
 
 export type ActionType = {
     type: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     payload: any
 }
 
@@ -44,7 +45,7 @@ export const set7DaysError = (errorMessage: ErrorType): ActionType => ({
 })
 
 export const set7DaysLoading = (isLoading: isLoadingType): ActionType => ({
-    type: TypeKeys.SET_7DAYS_ERROR,
+    type: TypeKeys.SET_7DAYS_LOADING,
     payload: isLoading,
 })
 
@@ -61,34 +62,31 @@ export const setDayPastError = (errorMessage: ErrorType): ActionType => ({
 })
 
 export const setDayPastLoading = (isLoading: isLoadingType): ActionType => ({
-    type: TypeKeys.SET_DAY_PAST_ERROR,
+    type: TypeKeys.SET_DAY_PAST_LOADING,
     payload: isLoading,
 })
 
-export const requestWeatherInfoDayPast = () => {
+export const requestWeatherInfoDayPast = (
+    coordinates: CoordinatesType,
+    time: TimeType
+) => {
     return (dispatch: ThunkDispatch<unknown, unknown, ActionType>): void => {
         dispatch(setDayPastError(null))
         dispatch(setDayPastLoading(true))
-        geWeatherInfotDayPast(
-            {
-                lat: '53.195873',
-                lon: '50.100193',
-            }, // Comment: Change hardcoded data
-            1620932656 // Comment: Change hardcoded data
-        )
-            .then(
-                (
-                    res: ResponseWeatheInforDayPastType
-                ): ResponseSuccessfulWeatherInfoDayPastType => {
-                    const { current } = res
-                    console.log()
-                    return current ?? null
-                }
-            )
-            .then((day: ResponseSuccessfulWeatherInfoDayPastType): void => {
-                const image = getImageString(day?.weather?.[0]?.icon ?? null)
-                const temperature = day?.temp ?? null
-                const date = day?.dt ?? null
+        getWeatherInfoDayPast(coordinates, time)
+            .then((res: ResponseWeatheInforDayPastType): void => {
+                const { current, hourly } = res
+                const temps = hourly?.map((hour) => hour.temp) || []
+                const maxTemp = Math.max(...temps)
+                const index =
+                    hourly?.findIndex(
+                        (hour): boolean => hour.temp === maxTemp
+                    ) || 0
+                const image = getImageString(
+                    hourly?.[index]?.weather?.[0]?.icon ?? null
+                )
+                const temperature = hourly?.[index]?.temp ?? null
+                const date = current?.dt ?? null
                 dispatch(setDayPastWeatherInfo({ date, temperature, image }))
             })
             .catch((error: ResponseWeatherInfo7DaysType): void => {
@@ -97,19 +95,16 @@ export const requestWeatherInfoDayPast = () => {
                 dispatch(setDayPastError(message ?? 'The request failed'))
             })
             .finally(() => {
-                dispatch(setDayPastLoading(true))
+                dispatch(setDayPastLoading(false))
             })
     }
 }
 
-export const requestWeather7DaysInfo = () => {
+export const requestWeather7DaysInfo = (coordinates: CoordinatesType) => {
     return (dispatch: ThunkDispatch<unknown, unknown, ActionType>): void => {
         dispatch(set7DaysError(null))
         dispatch(set7DaysLoading(true))
-        getWeatherInfo7days({
-            lat: '53.195873',
-            lon: '50.100193',
-        }) // Comment: Change hardcoded data
+        getWeatherInfo7days(coordinates)
             .then(
                 (
                     sevenDaysInfo: ResponseWeatherInfo7DaysType
@@ -122,25 +117,28 @@ export const requestWeather7DaysInfo = () => {
                 (
                     sevenDaysInfo: ResponseSuccessfulWeatherInfo7DaysType
                 ): void => {
-                    dispatch(
-                        set7DaysWeatherInfo(
-                            sevenDaysInfo.map(
-                                (
-                                    // eslint-disable-next-line max-len
-                                    dayInfo: ResponseSuccessfulWeatherInfo7DaysItemType
-                                ): WeatherCardType => {
-                                    const image = getImageString(
-                                        dayInfo?.weather?.[0]?.icon ?? null
-                                    )
-                                    const temperature =
-                                        dayInfo?.temp?.day ?? null
-                                    const date = dayInfo?.dt ?? null
-                                    console.log({ date, temperature, image })
-                                    return { date, temperature, image }
-                                }
+                    if (sevenDaysInfo.length === 0) {
+                        dispatch(set7DaysWeatherInfo([]))
+                    } else {
+                        dispatch(
+                            set7DaysWeatherInfo(
+                                sevenDaysInfo.map(
+                                    (
+                                        // eslint-disable-next-line max-len
+                                        dayInfo: ResponseSuccessfulWeatherInfo7DaysItemType
+                                    ): WeatherCardType => {
+                                        const image = getImageString(
+                                            dayInfo?.weather?.[0]?.icon ?? null
+                                        )
+                                        const temperature =
+                                            dayInfo?.temp?.day ?? null
+                                        const date = dayInfo?.dt ?? null
+                                        return { date, temperature, image }
+                                    }
+                                )
                             )
                         )
-                    )
+                    }
                 }
             )
             .catch((error: ResponseWeatherInfo7DaysType): void => {
@@ -148,7 +146,7 @@ export const requestWeather7DaysInfo = () => {
                 dispatch(set7DaysError(message ?? 'The request failed'))
             })
             .finally(() => {
-                dispatch(set7DaysLoading(true))
+                dispatch(set7DaysLoading(false))
             })
     }
 }
