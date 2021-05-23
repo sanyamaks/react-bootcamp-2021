@@ -1,0 +1,118 @@
+.input-date-container {
+    position: relative;
+    min-height: 48px;
+    width: 252px;
+    cursor: auto;
+}
+
+.input-date-container__input {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    min-height: 48px;
+    min-width: 100%;
+
+    background: rgba(128, 131, 164, 0.06);
+    border: 2px solid rgba(128, 131, 164, 0.2);
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    cursor: auto;
+}
+
+.input-date-container__input:hover {
+    border: 2px solid var(--color-secondary);
+}
+
+.input-date-container__input:active {
+    border: 2px solid var(--color-accent);
+}
+
+.input-date-container__input::-webkit-datetime-edit {
+    position: absolute;
+    z-index: -1;
+}
+
+.input-date-container__input::-webkit-datetime-edit-fields-wrapper {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-datetime-edit-text {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-datetime-edit-month-field {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-datetime-edit-day-field {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-datetime-edit-year-field {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-inner-spin-button {
+    position: absolute;
+    z-index: -1;
+}
+.input-date-container__input::-webkit-calendar-picker-indicator {
+    width: 42px;
+    height: 42px;
+    background: none;
+    cursor: pointer;
+    opacity: none;
+}
+
+.input-date-container__value {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 0 0 0 16px;
+
+    z-index: 10;
+
+    font-family: Ubuntu;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: var(--color-secondary);
+}
+
+.input-date-container__value_active {
+    color: var(--color-base-strong);
+}
+
+.input-date-container__input::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 1px;
+    right: -24px;
+    height: 48px;
+    width: 100px;
+    background-image: url('../../../assets/icons/calendar.svg');
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.input-date-container__input::placeholder {
+    position: absolute;
+    z-index: -1;
+    opacity: none;
+}
+
