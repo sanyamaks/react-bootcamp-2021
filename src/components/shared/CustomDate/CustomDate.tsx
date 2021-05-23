@@ -67,4 +67,4 @@ const CustomDate = (props: Props): JSX.Element => {
     )
 }
 
-export default CustomDate
+export default React.memo(CustomDate)
