@@ -26,12 +26,14 @@ export const getWeatherInfo7days = async (
             '&appid=' +
             apiKey
     )
-    const res1 = res.json()
-
-    return res1
+    if (res.ok) {
+        return res.json()
+    } else {
+        return Promise.reject(new Error('The request failed'))
+    }
 }
 
-export const geWeatherInfotDayPast = async (
+export const getWeatherInfoDayPast = async (
     coordinates: CoordinatesType,
     time: TimeType
 ): Promise<ResponseWeatheInforDayPastType> => {
@@ -48,9 +50,11 @@ export const geWeatherInfotDayPast = async (
             '&appid=' +
             apiKey
     )
-    const res1 = res.json()
-
-    return res1
+    if (res.ok) {
+        return res.json()
+    } else {
+        return Promise.reject(new Error('The request failed'))
+    }
 }
 
 export const getImageString = (image: ImageType): ImageType => {
