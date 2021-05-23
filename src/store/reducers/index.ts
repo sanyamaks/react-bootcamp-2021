@@ -8,7 +8,7 @@ import {
 import { ActionType, TypeKeys } from '../actions'
 
 export type InitialStateType = {
-    idActiveCity: number | null // Comment: Possibly unnecessary variable
+    idActiveCity: number | null
     cities: CitiesType
     sevenDays: {
         days: Weather7DaysCardsType
@@ -23,7 +23,7 @@ export type InitialStateType = {
 }
 
 const initialState: InitialStateType = {
-    idActiveCity: null, // Comment: Possibly unnecessary variable
+    idActiveCity: null,
     cities: [
         {
             id: 1,
