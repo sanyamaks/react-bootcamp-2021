@@ -1,0 +1,20 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    margin: 185px 0 0 0;
+}
+
+.footer__text {
+    text-transform: uppercase;
+    font-family: Ubuntu;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        margin: 60px 0 0 0;
+    }
+}
