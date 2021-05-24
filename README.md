@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# React Bootcamp 2021
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Ссылка на github pages:
+[react-bootcamp-2021](https://sanyamaks.github.io/react-bootcamp-2021/)
 
-## Available Scripts
+## Стэк:
+- [Create React App](https://create-react-app.dev/)
+- [Redux](https://redux.js.org/)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
+- [Typescript](https://www.typescriptlang.org/)
 
-In the project directory, you can run:
+## Linter:
+- [ESLint](https://eslint.org/)
 
-### `yarn start`
+## Code formatter:
+- [Prettier](https://prettier.io/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Инструкции по запуску:
+- Скачать или склонировать репозитори
+- Установить зависимости при помощи yarn - `yarn install`
+- Запустить проект - `yarn start`
+- Запустить сборку build - `yarn build`
+- Разместить сборку build на github pages - `yarn deploy`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Дополнительно:
+### Основные сложности:
+- Первый проект на Typescript, поэтому осталось много вопрос.
+- Select города: Было много вариантов, но выбрал именно [тот](https://css-tricks.com/striking-a-balance-between-native-and-custom-select-elements/), который позволяет совместить семантику и стилизацию. Добавление и своевременное удаление слушателей на документе было самым болезненным.
+- Datepicker: Данная стилизация адекватно работает только в Chrome на Desktop'e. Чуть кривее выглядит на мобильной версии Chrome, и совсем плохоу в Firefox. Осталось непонятным, как стилизовать по макету datepicker не нарушая семантику для большего количества браузеров.
+- Карусель карточек: Использовал слушатель события `resize` для отображения 3 или 7 карточке на мобильной версии и Desktop версии соответственно. На мой взгляд, достаточно ресурсоёмкое решение. Отказался от решения с anchor, т.к. страницу начинает прокручивать по вертикали вниз до карточки. 
+- WeatherAPI: Api, предоставляющее прогноз погоды на 7 дней на самом деле выдаёт 8 дней. Не стал убирать первый или последний. Api, предостовляющее прогнозы погода на прошедшие дни выдаёт температуру, которая не является средней или максимальной. Не сразу увидел это. Пришлось вычислять максимальную температуру за день и брать этот элемент из api. Если так и задумывалось, то для меня это ок.
