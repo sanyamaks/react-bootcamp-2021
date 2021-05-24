@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.e7030938.chunk.css",
-    "main.js": "/static/js/main.6f102b72.chunk.js",
-    "main.js.map": "/static/js/main.6f102b72.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.13b67c94.js",
-    "runtime-main.js.map": "/static/js/runtime-main.13b67c94.js.map",
-    "static/js/2.e1bbc5c5.chunk.js": "/static/js/2.e1bbc5c5.chunk.js",
-    "static/js/2.e1bbc5c5.chunk.js.map": "/static/js/2.e1bbc5c5.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.e7030938.chunk.css.map": "/static/css/main.e7030938.chunk.css.map",
-    "static/js/2.e1bbc5c5.chunk.js.LICENSE.txt": "/static/js/2.e1bbc5c5.chunk.js.LICENSE.txt",
-    "static/media/Academy-Weather-bg160.1a743710.svg": "/static/media/Academy-Weather-bg160.1a743710.svg",
-    "static/media/index.css": "/static/media/Weather-forecast-Bg-top@2x.d16d8bee.png",
-    "static/media/CustomDate.css": "/static/media/calendar.b59ccd47.svg",
-    "static/media/chevron-left.668da982.svg": "/static/media/chevron-left.668da982.svg",
-    "static/media/chevron-right.d8b7c444.svg": "/static/media/chevron-right.d8b7c444.svg",
-    "static/media/chevron-top.01db9ee1.svg": "/static/media/chevron-top.01db9ee1.svg"
+    "main.css": "/react-bootcamp-2021/static/css/main.148155ba.chunk.css",
+    "main.js": "/react-bootcamp-2021/static/js/main.6f102b72.chunk.js",
+    "main.js.map": "/react-bootcamp-2021/static/js/main.6f102b72.chunk.js.map",
+    "runtime-main.js": "/react-bootcamp-2021/static/js/runtime-main.3049c78a.js",
+    "runtime-main.js.map": "/react-bootcamp-2021/static/js/runtime-main.3049c78a.js.map",
+    "static/js/2.e1bbc5c5.chunk.js": "/react-bootcamp-2021/static/js/2.e1bbc5c5.chunk.js",
+    "static/js/2.e1bbc5c5.chunk.js.map": "/react-bootcamp-2021/static/js/2.e1bbc5c5.chunk.js.map",
+    "index.html": "/react-bootcamp-2021/index.html",
+    "static/css/main.148155ba.chunk.css.map": "/react-bootcamp-2021/static/css/main.148155ba.chunk.css.map",
+    "static/js/2.e1bbc5c5.chunk.js.LICENSE.txt": "/react-bootcamp-2021/static/js/2.e1bbc5c5.chunk.js.LICENSE.txt",
+    "static/media/Academy-Weather-bg160.1a743710.svg": "/react-bootcamp-2021/static/media/Academy-Weather-bg160.1a743710.svg",
+    "static/media/index.css": "/react-bootcamp-2021/static/media/Weather-forecast-Bg-top@2x.d16d8bee.png",
+    "static/media/CustomDate.css": "/react-bootcamp-2021/static/media/calendar.b59ccd47.svg",
+    "static/media/chevron-left.668da982.svg": "/react-bootcamp-2021/static/media/chevron-left.668da982.svg",
+    "static/media/chevron-right.d8b7c444.svg": "/react-bootcamp-2021/static/media/chevron-right.d8b7c444.svg",
+    "static/media/chevron-top.01db9ee1.svg": "/react-bootcamp-2021/static/media/chevron-top.01db9ee1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.13b67c94.js",
+    "static/js/runtime-main.3049c78a.js",
     "static/js/2.e1bbc5c5.chunk.js",
-    "static/css/main.e7030938.chunk.css",
+    "static/css/main.148155ba.chunk.css",
     "static/js/main.6f102b72.chunk.js"
   ]
 }
