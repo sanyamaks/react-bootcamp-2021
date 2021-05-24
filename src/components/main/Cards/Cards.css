@@ -12,8 +12,12 @@
     cursor: pointer;
 }
 
+.cards__button_many-card {
+    margin: 0 0 30px 0;
+}
+
 .cards__button_disabled {
-    opacity: .4;
+    opacity: 0.4;
     cursor: auto;
 }
 

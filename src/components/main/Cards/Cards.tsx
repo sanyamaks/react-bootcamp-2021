@@ -88,6 +88,7 @@ const Cards = (props: Props): JSX.Element => {
             {cards.length > 3 && (
                 <button
                     className={cn('cards__button', {
+                        'cards__button_many-card': cards.length > maxCards,
                         cards__button_disabled: idCards === maxCards,
                     })}
                     onClick={handleClickLeft}
@@ -114,6 +115,7 @@ const Cards = (props: Props): JSX.Element => {
             {numberCards > maxCards && (
                 <button
                     className={cn('cards__button', {
+                        'cards__button_many-card': cards.length > maxCards,
                         cards__button_disabled: idCards === cards.length,
                     })}
                     onClick={handleClickRight}
